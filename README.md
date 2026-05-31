@@ -10,6 +10,8 @@ Web application penetration testing suite — Python offensive framework + Go vu
 
 ### Install
 
+**Requires:** Python 3.8+
+
 ```bash
 pip install -r requirements.txt
 ```
