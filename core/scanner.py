@@ -890,7 +890,7 @@ class SmartRouter:
     # These modules own origin-level deduplication internally (self._seen).
     # The router submits them exactly once — against the origin root URL.
     ORIGIN_MODULES: frozenset = frozenset({'auth', 'acl', 'sensitive', 'misconfig'})
-    PER_URL_MODULES: frozenset = frozenset({'sqli', 'xss', 'rce', 'xxe', 'ssti'})
+    PER_URL_MODULES: frozenset = frozenset({'sqli', 'xss', 'rce', 'xxe', 'ssti', 'openredirect'})
 
     @classmethod
     def route(
@@ -960,6 +960,10 @@ class SmartRouter:
         # XXE: XML paths or upload endpoints — independent of injection worthiness
         if cls._XML_PATH.search(path) or "xml" in all_params_lower:
             relevant.add("xxe")
+
+        # Open redirect: redirect/url/next params — independent of injection worthiness
+        if all_params_lower & cls._REDIRECT_PARAMS:
+            relevant.add("openredirect")
 
         return frozenset(relevant)
 

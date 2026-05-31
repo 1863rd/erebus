@@ -71,6 +71,7 @@ Examples:
 _VALID_MODULES    = frozenset({
     "sqli", "xss", "rce", "xxe",
     "auth", "acl", "sensitive", "ssti", "misconfig",
+    "openredirect",
 })
 
 _MODE_PRESETS = {
@@ -414,6 +415,7 @@ def _run_scan(args: argparse.Namespace) -> None:
         from modules.sensitive_data import SensitiveDataModule
         from modules.ssti import SSTIModule
         from modules.security_misconfig import SecurityMisconfigModule
+        from modules.openredirect import OpenRedirectModule
     except ImportError as exc:
         _die(
             f"Import error: {exc}\n"
@@ -476,6 +478,8 @@ def _run_scan(args: argparse.Namespace) -> None:
         modules.append(SSTIModule(http, evasion))
     if "misconfig" in ml:
         modules.append(SecurityMisconfigModule(http, evasion))
+    if "openredirect" in ml:
+        modules.append(OpenRedirectModule(http, evasion))
 
     t0 = time.perf_counter()
 
