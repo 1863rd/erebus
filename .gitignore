@@ -1,0 +1,50 @@
+# Compiled binaries
+*.exe
+*.out
+scanner/erebus-scanner
+scanner/erebus-scanner.exe
+dist/
+
+# Scan reports (may contain target data)
+*.html
+*.json
+report.*
+scan_*
+results/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Secrets / environment
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+secrets.yaml
+secrets.yml
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Go test / build artifacts
+coverage.out
+*.test
+vendor/
+
+# Logs
+*.log
+logs/
+tmp/
