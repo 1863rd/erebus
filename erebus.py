@@ -213,7 +213,8 @@ def _build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=_EPILOG,
     )
-    parser.add_argument("--version", action="version", version=f"EREBUS {VERSION}")
+    parser.add_argument("--version",      action="version", version=f"EREBUS {VERSION}")
+    parser.add_argument("--list-modules", action="store_true", help="List available modules and exit")
 
     grp = parser.add_argument_group("Scan")
     grp.add_argument("--scan",   action="store_true", help="Scan target for vulnerabilities")
@@ -802,6 +803,14 @@ def main() -> None:
 
     parser = _build_parser()
     args = parser.parse_args()
+
+    if args.list_modules:
+        print(f"\n{Fore.CYAN}Available modules:{Style.RESET_ALL}")
+        for name in sorted(_VALID_MODULES):
+            print(f"  {Fore.WHITE}{name}{Style.RESET_ALL}")
+        print()
+        sys.exit(0)
+
     _validate_args(parser, args)
 
     if args.teamserver:
