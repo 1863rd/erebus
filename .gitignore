@@ -5,7 +5,7 @@ scanner/erebus-scanner
 scanner/erebus-scanner.exe
 dist/
 
-# Scan reports (may contain target data)
+# Scan reports
 *.html
 *.json
 report.*
@@ -20,7 +20,7 @@ __pycache__/
 venv/
 env/
 
-# Secrets / environment
+# Environment
 .env
 .env.*
 *.key
